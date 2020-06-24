@@ -4,8 +4,8 @@ import { withStyles } from '@material-ui/core';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import TopBar from "./top-bar";
-import SideBar from "./side-bar";
+import TopBar from "../topbar-sidebar/top-bar";
+import SideBar from "../topbar-sidebar/side-bar";
 import CardCategory from "./category-card";
 
 const drawerWidth = 240;

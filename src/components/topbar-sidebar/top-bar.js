@@ -10,6 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 
 import Popper from '@material-ui/core/Popper';
 import { ClickAwayListener } from '@material-ui/core';
+import PopupCreate from "./popups/popup-create-items";
 
 class TopBar extends React.Component {
     constructor(props) {
@@ -110,15 +111,9 @@ class TopBar extends React.Component {
                             >
                                 Створити групу
                             </button>
-                            <button
-                                className="create-vac-employer"
-                                onClick={evt => {
-                                    evt.preventDefault();
-                                    window.location.href = `/employer-vacancy-create/${this.state.employerID}`;
-                                }}
-                            >
-                                Створити товар
-                            </button>
+
+                            <PopupCreate/>
+
                         </div>
 
                     </div>

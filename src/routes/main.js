@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import Login from "../components/login";
-import AllCategories from "../components/all-categories";
+import AllCategories from "../components/all-categories/all-categories";
 import AllItems from "../components/all-items/all-items";
 
 class Main extends React.Component {

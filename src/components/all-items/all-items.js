@@ -4,9 +4,9 @@ import { withStyles } from '@material-ui/core';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import TopBar from "../top-bar";
-import SideBar from "../side-bar";
-import CardCategory from "../category-card";
+import TopBar from "../topbar-sidebar/top-bar";
+import SideBar from "../topbar-sidebar/side-bar";
+import CardCategory from "../all-categories/category-card";
 import TableAllItems from "./table/table-all-items";
 import CardStatistics from "./statistics-card";
 
