@@ -120,7 +120,7 @@ export default class Login extends React.Component{
                         <div className="col-6 padding-top-login">
 
                             <div className="row center-row">
-                                <div className="col-10">
+                                <div className="col-9">
                                     <div className="row">
                                         <div className="col-12">
                                             <p className="hello-text-login">Вітаємо!</p>
@@ -143,9 +143,11 @@ export default class Login extends React.Component{
                                     </div>
                                     <div className="row">
                                         <div className="col-12">
+                                            <a href="/all-items">
                                             <button className="login-button">
                                                 Увійти
                                             </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

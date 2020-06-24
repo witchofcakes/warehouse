@@ -3,7 +3,11 @@
 }
 
 .image-login-container{
-    background: gray;
+    background: linear-gradient(to right top, rgba(254, 95, 85, 0.26), rgba(198, 73, 122, 0.25), rgba(121, 71, 124, 0.25), rgba(57, 60, 91, 0.26), #21252952), url("../images/background-login.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
     height: 100vh;
 }
 
@@ -40,7 +44,7 @@
     border-radius: 5px;
     font-size: 16px;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 #outlined-text-email{

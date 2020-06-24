@@ -75,7 +75,7 @@ button:focus{
 }
 
 .MuiOutlinedInput-input{
-  padding: 18px 14px !important;
+  padding: 16px 14px !important;
 }
 
 body{
@@ -90,4 +90,32 @@ body{
 
 .no-gutters-left{
   padding-left: 0 !important;
+}
+
+.MuiInputBase-root legend{
+  font-size: 12.5px !important;
+}
+
+.MuiInputLabel-outlined{
+  font-size: 16px !important;
+}
+
+.MuiInputBase-input{
+  /*height: 1.4876em !important;*/
+}
+
+.MuiSelect-select.MuiSelect-select{
+  font-size: 16px !important;
+  font-family: "GolosTextWeb", sans-serif !important;
+}
+
+.MuiListItem-root{
+  font-size: 16px !important;
+  font-family: "GolosTextWeb", sans-serif !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+
+.MuiButtonGroup-root{
+  width: 100% !important;
 }
