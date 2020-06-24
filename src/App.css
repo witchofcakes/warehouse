@@ -36,3 +36,58 @@
     transform: rotate(360deg);
   }
 }
+
+.center-row{
+  display: flex;
+  justify-content: center;
+}
+
+.align-items-center{
+  display: flex;
+  align-items: center;
+}
+
+.justify-content-center{
+  display: flex;
+  justify-content: center;
+}
+
+.justify-content-end{
+  display: flex;
+  justify-content: flex-end;
+}
+
+button:focus{
+  outline: none
+}
+
+.MuiFormControl-root {
+  width: 100% !important;
+}
+
+.MuiInputLabel-outlined{
+  /*font-size: 16px !important;*/
+  font-family: "GolosTextWeb", sans-serif !important;
+}
+
+.MuiTypography-body1{
+  font-family: "GolosTextWeb", sans-serif !important;
+}
+
+.MuiOutlinedInput-input{
+  padding: 18px 14px !important;
+}
+
+body{
+  /*background: #fafaff !important;*/
+  background: #fffdfd !important;
+}
+
+.no-gutters{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.no-gutters-left{
+  padding-left: 0 !important;
+}

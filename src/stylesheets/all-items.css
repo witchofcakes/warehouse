@@ -1,0 +1,51 @@
+.price-number-statistics{
+    font-size: 22px;
+    font-weight: 600;
+    color: #212529;
+    margin-bottom: 0;
+}
+
+.overall-price-statistics{
+    font-size: 16px;
+    color: #484848;
+    margin-bottom: 0;
+}
+
+.feather-credit-card-statistics{
+    width: 24px;
+    height: 24px;
+    stroke: #bdbebf;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+
+.icon-div-color{
+    width: 50px;
+    height: 50px;
+    background: #61dafb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+
+}
+
+.icon-div-statistics{
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.price-div-inline{
+    display: inline-block;
+}
+
+.block-statistics{
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 70px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px !important;
+}

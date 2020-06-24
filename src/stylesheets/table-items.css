@@ -1,0 +1,242 @@
+.employer-cabinet-display {
+    display: flex;
+    /*margin-bottom: 120px;*/
+}
+
+#search-navbar-employer-vacancy {
+    height: 25px !important;
+    background-color: white;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important; */
+    /* border: 1px solid #ebebec !important; */
+    border-radius: 50px !important;
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 15px !important;
+    padding-right: 15px !important;
+    color: #212529 !important;
+}
+
+#leftCol-employer-wide {
+    position: fixed;
+    border-right: 1px solid #ebebec !important;
+    /*background-color: #DDD;*/
+    font-size: 16px;
+    /*overflow-y: scroll;*/
+    top: 0px;
+    padding-top: 10px;
+    bottom: 0;
+    width: 205px !important;
+    background: white;
+}
+
+.not-active-menu {
+    display: none !important;
+}
+
+.active-button {
+    display: inline !important;
+}
+
+.logo-mount-employer {
+    height: 35px;
+    width: 35px;
+}
+
+#content-employer {
+    width: 85%;
+    padding-top: 70px;
+    position: relative;
+    margin-left: 160px;
+    margin-right: 20px;
+    padding-bottom: 80px;
+    transition: margin-left 250ms ease-out, transform 250ms ease-out,
+    -webkit-transform 250ms ease-out;
+    /*padding-right: 74px;*/
+}
+
+#table-pagination {
+    border-bottom: 1.5px solid #ebebec !important;
+    border-left: 1.5px solid #ebebec !important;
+    border-right: 1.5px solid #ebebec !important;
+    border-top: 1px solid #ebebec !important;
+    position: sticky !important;
+    bottom: 0 !important;
+    border-bottom-right-radius: 10px !important;
+    border-bottom-left-radius: 10px !important;
+}
+
+.container-mui-table {
+    min-height: 400px;
+    border-radius: 10px !important;
+    /*border: 1px solid red;*/
+    overflow-y: hidden !important;
+}
+
+.paper-mui-table {
+    width: 100%;
+    border-radius: 10px !important;
+    box-shadow: none !important;
+}
+
+.MuiTableCell-stickyHeader {
+    background-color: white !important;
+}
+
+.search-employer:focus {
+    outline: none !important;
+    /*height: 52px !important;*/
+}
+
+.search-employer::placeholder {
+    color: #cdcdcd;
+    font-size: 15px;
+    /*height: 52px !important;*/
+}
+
+.table thead th {
+    /*text-transform: uppercase;*/
+    color: #9c9c9c;
+    font-size: 14px;
+    font-weight: 400 !important;
+    vertical-align: bottom;
+    border-bottom: 1px solid #ebebec !important;
+    padding-top: 0.9rem !important;
+}
+
+.MuiTablePagination-toolbar {
+    min-height: 50px !important;
+    background: white !important;
+}
+
+.MuiTableRow-head th {
+    font-size: 13px !important;
+    color: #717171 !important;
+    padding: 10px 0.75em 10px 0.75rem;
+    vertical-align: top;
+    font-family: 'Open Sans', sans-serif !important;
+    border-bottom: 1px solid #ebebec !important;
+    font-weight: 400 !important;
+    background-color: white !important;
+    z-index: 3 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+}
+
+.MuiTableCell-root {
+    font-size: 15px !important;
+    color: #212529 !important;
+    font-family: 'Open Sans', sans-serif !important;
+    /*border-bottom: 1px solid #ebebec !important;*/
+}
+
+#select-status {
+    /*max-width: 160px;*/
+    font-size: 15px !important;
+    background-color: unset !important;
+}
+
+#select-status-vacancy {
+    padding-right: 24px;
+    font-size: 15px !important;
+    /*max-width: 160px;*/
+    /*margin-top: -3.5px;*/
+    background-color: unset !important;
+}
+
+#candidate-row-td-ellipsis-status .MuiSelect-icon {
+    /*max-width: 160px;*/
+    margin-top: -2px !important;
+}
+
+#vacancy-row-td .MuiSelect-icon {
+    /*max-width: 160px;*/
+    width: 18px !important;
+    height: 18px !important;
+    margin-right: 3px !important;
+    margin-top: -2px !important;
+}
+
+.td-margin {
+    font-family: "GolosTextWeb", sans-serif !important;
+    margin-bottom: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.td-margin:hover {
+    /*text-overflow: clip;*/
+    /*white-space: normal;*/
+    /*word-break: break-word;*/
+}
+
+.td-margin {
+    font-size: 15px !important;
+}
+
+.cand-row-type {
+    max-width: 180px !important;
+}
+
+.cand-row-date {
+    max-width: 80px !important;
+}
+
+
+.MuiTablePagination-caption {
+    flex-shrink: 0;
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+.fab-align {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.margin-table-collapse {
+    padding-top: 40px;
+    padding-bottom: 30px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.delete-order-camp-row{
+    background: unset;
+    border: none;
+    padding: 0;
+}
+
+.feather-trash-delete-order-camp-row {
+    width: 18px;
+    height: 18px;
+    stroke: #212529;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    margin-bottom: 2px!important;
+}
+
+.collapse-name-details {
+    display: inline;
+    font-size: 15px;
+    color: #212529;
+    font-weight: 500;
+    text-align: right;
+    /*margin-right: 8px;*/
+}
+
+.collapse-details {
+    display: inline;
+    font-size: 15px;
+    color: #212529;
+}
+
+.container-kanban {
+    height: calc(100vh - 7.1875rem);
+    display: flex;
+    flex-direction: column;
+}
+
+.MuiTableContainer-root {
+    overflow-x: unset !important;
+}

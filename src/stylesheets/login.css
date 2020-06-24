@@ -1,0 +1,53 @@
+.padding-top-login{
+    padding-top: 25vh;
+}
+
+.image-login-container{
+    background: gray;
+    height: 100vh;
+}
+
+.hello-text-login{
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+
+.feather-eye-login {
+    width: 19px;
+    stroke: #212529;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+
+.feather-eye-off-login {
+    width: 19px;
+    stroke: #212529;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+
+.login-button{
+    background: #FE5F55;
+    padding: 13px;
+    font-weight: 600;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#outlined-text-email{
+    font-size: 16px !important;
+    font-family: "GolosTextWeb", sans-serif !important;
+}
+
+.margin-bottom-email-field{
+    margin-bottom: 25px;
+}
