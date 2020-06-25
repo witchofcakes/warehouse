@@ -109,7 +109,7 @@ export default class PopupCreate extends React.Component{
             >
                 {close => (
                     <div className="container">
-                        <div className="row margin-bottom-top-phrase-create">
+                        <div className="row margin-bottom-create-item">
                             <div className="col-12">
                                 <span className="item-creation-main-text">Створення товару</span>
                                 <div className="close" onClick={close}>
@@ -118,7 +118,7 @@ export default class PopupCreate extends React.Component{
                             </div>
                         </div>
 
-                        <div className="row margin-bottom-email-field">
+                        <div className="row margin-bottom-create-item">
                             <div className="col-12">
                                 <CssTextField
                                     required
@@ -129,7 +129,7 @@ export default class PopupCreate extends React.Component{
                             </div>
                         </div>
 
-                        <div className="row margin-bottom-email-field">
+                        <div className="row margin-bottom-create-item">
                             <div className="col-12">
                                 <ButtonGroup>
                                     <Button
@@ -159,7 +159,7 @@ export default class PopupCreate extends React.Component{
                             </div>
                         </div>
 
-                        <div className="row margin-bottom-email-field">
+                        <div className="row margin-bottom-create-item">
                             <div className="col-12">
                                 <CssTextField
                                     required
@@ -170,7 +170,7 @@ export default class PopupCreate extends React.Component{
                             </div>
                         </div>
 
-                        <div className="row margin-bottom-email-field">
+                        <div className="row margin-bottom-create-item">
                             <div className="col-12" id="outlined-select-currency">
                                 <CssTextField
                                     required
@@ -193,7 +193,7 @@ export default class PopupCreate extends React.Component{
                         <FormControl required fullWidth={true} variant="outlined">
                             <InputLabel htmlFor="outlined-adornment-password">Ціна товару</InputLabel>
                             <OutlinedInput
-                                className="margin-bottom-email-field"
+                                className="margin-bottom-create-item"
                                 name={'product_price'}
                                 label="Ціна товару*"
                                 value={this.state.product_price}
@@ -206,7 +206,7 @@ export default class PopupCreate extends React.Component{
                             />
                         </FormControl>
 
-                        <div className="row margin-bottom-email-field">
+                        <div className="row margin-bottom-create-item">
                             <div className="col-12">
                                 <CssTextField
                                     multiline

@@ -6,9 +6,9 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 
 import TopBar from "../topbar-sidebar/top-bar";
 import SideBar from "../topbar-sidebar/side-bar";
-import CardCategory from "../all-categories/category-card";
-import TableAllItems from "./table/table-all-items";
-import CardStatistics from "./statistics-card";
+import TableAllItems from "../all-items/table/table-all-items";
+
+import Tooltip from "@material-ui/core/Tooltip";
 
 const drawerWidth = 240;
 
@@ -123,7 +123,7 @@ const styles = theme => ({
     },
 });
 
-class AllItems extends React.Component {
+class CategoryPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -146,11 +146,34 @@ class AllItems extends React.Component {
             <div className={classes.content}>
                 <div className={classes.toolbar} />
 
-                <CardStatistics/>
-
                 <div className="row">
-                    <div className="col-12">
-                        <div className="all-items-title-cabinet">Всі товари</div>
+                    <div className="col-8">
+                        <div className="text-main-title-cabinet">Продовольчі товари</div>
+                    </div>
+                    <div className="col-4 justify-content-end">
+                        <Tooltip title={"Додати товар в групу"}>
+                            <button className="button-edit-group">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="feather-plus-item-category">
+                                    <line x1="12" y1="5" x2="12" y2="19"/>
+                                    <line x1="5" y1="12" x2="19" y2="12"/>
+                                </svg>
+                            </button>
+                        </Tooltip>
+                        <Tooltip title={"Редагувати групу товарів"}>
+                            <button className="button-edit-group margin-delete-category">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="feather-edit-category">
+                                    <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
+                                </svg>
+                            </button>
+                        </Tooltip>
+                        <Tooltip title={"Видалити групу товарів"}>
+                            <button className="button-edit-group margin-delete-category">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="feather-edit-category">
+                                    <polyline points="3 6 5 6 21 6"/>
+                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                </svg>
+                            </button>
+                        </Tooltip>
                     </div>
                 </div>
 
@@ -186,4 +209,4 @@ class AllItems extends React.Component {
         );
     }
 }
-export default withStyles(styles, { withTheme: true })(AllItems);
+export default withStyles(styles, { withTheme: true })(CategoryPage);

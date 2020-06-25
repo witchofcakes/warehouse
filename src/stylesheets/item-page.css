@@ -1,0 +1,27 @@
+.item-title-popup{
+    font-weight: 600;
+    font-size: 24px;
+    color: #212529;
+    margin-bottom: 30px;
+}
+
+.name-category-item-popup{
+    font-weight: 600;
+    font-size: 13px;
+    color: #717171;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.text-category-item-popup{
+    font-size: 16px;
+    color: #212529;
+    margin-bottom: 0;
+}
+
+.delete-item-popup-text{
+    text-align: left;
+    font-size: 18px;
+    color: #212529;
+    margin-bottom: 20px;
+}

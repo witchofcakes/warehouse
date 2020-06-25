@@ -3,7 +3,7 @@
 }
 
 .image-login-container{
-    background: linear-gradient(to right top, rgba(254, 95, 85, 0.26), rgba(198, 73, 122, 0.25), rgba(121, 71, 124, 0.25), rgba(57, 60, 91, 0.26), #21252952), url("../images/background-login.jpg");
+    background: linear-gradient(to right top, #F1171237, #0099F737), url("../images/background-login.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

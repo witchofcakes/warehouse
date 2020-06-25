@@ -14,7 +14,6 @@
 .feather-credit-card-statistics{
     width: 24px;
     height: 24px;
-    stroke: #bdbebf;
     stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -24,12 +23,50 @@
 .icon-div-color{
     width: 50px;
     height: 50px;
-    background: #61dafb;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 100%;
+}
 
+.icon-div-color-lightblue{
+    background: #e5fbff;
+}
+
+.icon-div-color-yellow{
+    background: #fefbe2;
+}
+
+.icon-div-color-red{
+    background: #ffece8;
+}
+
+.icon-div-color-green{
+    background: #edfce3;
+}
+
+.yellow-icon{
+    stroke: #ffdc23;
+}
+
+.red-icon {
+    stroke: #f55d50;
+}
+
+.violet-icon{
+    stroke: #7b53f8;
+}
+
+.blue-icon{
+    stroke: #538ef8;
+}
+
+.green-icon{
+    stroke: #7bd543;
+}
+
+.lightblue-icon{
+    stroke: #48d1e9;
 }
 
 .icon-div-statistics{
@@ -42,10 +79,18 @@
 }
 
 .block-statistics{
+    background: white;
     display: flex;
     align-items: center;
     border-radius: 8px;
     padding: 30px;
-    margin-bottom: 70px;
+    margin-bottom: 80px;
     box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px !important;
+}
+
+.all-items-title-cabinet {
+    font-size: 25px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 40px;
 }

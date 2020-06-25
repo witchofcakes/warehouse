@@ -1,6 +1,5 @@
 .employer-cabinet-display {
     display: flex;
-    margin-bottom: 120px;
 }
 
 /*.EmployerVacancies-content-10 {*/
@@ -22,10 +21,9 @@
 }
 
 .logo-mount-sidebar{
-    font-size: 25px;
-    color: #343434;
-    font-family: 'Permanent Marker', cursive !important;
-    letter-spacing: 0.4px;
+    width: 95px;
+    height: 30px;
+    margin-bottom: 2px;
 }
 
 .navbar-brand-sidebar:hover{
@@ -550,4 +548,41 @@
 
 .all-vac-employer-sidebar:hover{
     text-decoration: none;
+}
+
+.button-edit-group{
+    background: white;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ebebec;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.18) 0 1px 2px !important;
+    margin-top: -5px;
+}
+
+.feather-edit-category {
+    width: 19px;
+    height: 19px;
+    stroke: #212529;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+
+.feather-plus-item-category {
+    width: 23px;
+    height: 23px;
+    stroke: #212529;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}
+
+.margin-delete-category{
+    margin-left: 25px;
 }

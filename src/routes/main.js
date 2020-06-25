@@ -3,6 +3,7 @@ import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import Login from "../components/login";
 import AllCategories from "../components/all-categories/all-categories";
 import AllItems from "../components/all-items/all-items";
+import CategoryPage from "../components/all-categories/category-page";
 
 class Main extends React.Component {
 
@@ -19,6 +20,7 @@ class Main extends React.Component {
                         <Route path="/login" component={Login}/>
                         <Route path="/all-categories" component={AllCategories}/>
                         <Route path="/all-items" component={AllItems}/>
+                        <Route path="/category-page" component={CategoryPage}/>
                         {/*<Route component={DefaultContainer}/>*/}
                     </Switch>
                 </BrowserRouter>

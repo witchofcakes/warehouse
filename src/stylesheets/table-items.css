@@ -3,44 +3,6 @@
     /*margin-bottom: 120px;*/
 }
 
-#search-navbar-employer-vacancy {
-    height: 25px !important;
-    background-color: white;
-    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important; */
-    /* border: 1px solid #ebebec !important; */
-    border-radius: 50px !important;
-    font-family: 'Open Sans', sans-serif !important;
-    font-size: 15px !important;
-    padding-right: 15px !important;
-    color: #212529 !important;
-}
-
-#leftCol-employer-wide {
-    position: fixed;
-    border-right: 1px solid #ebebec !important;
-    /*background-color: #DDD;*/
-    font-size: 16px;
-    /*overflow-y: scroll;*/
-    top: 0px;
-    padding-top: 10px;
-    bottom: 0;
-    width: 205px !important;
-    background: white;
-}
-
-.not-active-menu {
-    display: none !important;
-}
-
-.active-button {
-    display: inline !important;
-}
-
-.logo-mount-employer {
-    height: 35px;
-    width: 35px;
-}
-
 #content-employer {
     width: 85%;
     padding-top: 70px;
@@ -112,9 +74,9 @@
     color: #717171 !important;
     padding: 10px 0.75em 10px 0.75rem;
     vertical-align: top;
-    font-family: 'Open Sans', sans-serif !important;
+    font-family: 'GolosTextWeb', sans-serif !important;
     border-bottom: 1px solid #ebebec !important;
-    font-weight: 400 !important;
+    font-weight: 500 !important;
     background-color: white !important;
     z-index: 3 !important;
     text-transform: uppercase !important;
@@ -122,9 +84,9 @@
 }
 
 .MuiTableCell-root {
-    font-size: 15px !important;
+    font-size: 16px !important;
     color: #212529 !important;
-    font-family: 'Open Sans', sans-serif !important;
+    font-family: 'GolosTextWeb', sans-serif !important;
     /*border-bottom: 1px solid #ebebec !important;*/
 }
 
@@ -155,36 +117,9 @@
     margin-top: -2px !important;
 }
 
-.td-margin {
-    font-family: "GolosTextWeb", sans-serif !important;
-    margin-bottom: 0;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-.td-margin:hover {
-    /*text-overflow: clip;*/
-    /*white-space: normal;*/
-    /*word-break: break-word;*/
-}
-
-.td-margin {
-    font-size: 15px !important;
-}
-
-.cand-row-type {
-    max-width: 180px !important;
-}
-
-.cand-row-date {
-    max-width: 80px !important;
-}
-
-
 .MuiTablePagination-caption {
     flex-shrink: 0;
-    font-family: 'Open Sans', sans-serif !important;
+    font-family: 'GolosTextWeb', sans-serif !important;
 }
 
 .fab-align {
@@ -239,4 +174,25 @@
 
 .MuiTableContainer-root {
     overflow-x: unset !important;
+}
+
+.container-table-paper{
+    width: 100% !important;
+    border-radius: 8px !important;
+    box-shadow: rgba(0, 0, 0, 0.15) 0 2px 8px !important;
+}
+
+.MuiTableRow-root.MuiTableRow-hover:hover{
+    cursor: pointer !important;
+}
+
+.table-width{
+    width: 120% !important;
+}
+
+.description-cell-width{
+    max-width: 250px !important;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }

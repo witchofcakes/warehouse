@@ -4,13 +4,20 @@
     text-transform: uppercase;
     color: #212529;
     margin-bottom: 30px;
+    text-align: left;
 }
 
 .popup-content {
-    top: 60px !important;
-    margin-bottom: 80px !important;
+    width: 60% !important;
+    /*top: 60px !important;*/
+    /*margin-bottom: 80px !important;*/
     border-radius: 10px !important;
     padding: 40px 40px 50px 40px !important;
+    text-align: left;
+}
+
+.popup-overlay{
+    z-index: 2000 !important;
 }
 
 .margin-bottom-top-phrase-create{
@@ -27,7 +34,7 @@
 
 .button-popup-create{
     background: #FE5F55;
-    padding: 13px;
+    padding: 15px;
     font-weight: 600;
     color: white;
     border: none;
@@ -65,4 +72,8 @@
 
 .MuiButtonGroup-grouped.MuiButtonGroup-groupedHorizontal.MuiButtonGroup-groupedOutlined.MuiButtonGroup-groupedOutlinedHorizontal.MuiButtonGroup-groupedOutlined.button-amount.button-reduce-amount {
     margin-left: 25px;
+}
+
+.margin-bottom-create-item{
+    margin-bottom: 35px;
 }

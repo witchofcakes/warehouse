@@ -6,6 +6,7 @@ import "./stylesheets/all-categories.css"
 import "./stylesheets/all-items.css"
 import "./stylesheets/table-items.css"
 import "./stylesheets/item-creation.css"
+import "./stylesheets/item-page.css"
 import "./fonts/Golos_Text.css"
 import App from './App';
 import * as serviceWorker from './serviceWorker';

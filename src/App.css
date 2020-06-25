@@ -80,7 +80,8 @@ button:focus{
 
 body{
   /*background: #fafaff !important;*/
-  background: #fffdfd !important;
+  background: #fffcfc !important;
+  /*background: #fafdff !important;*/
 }
 
 .no-gutters{
@@ -118,4 +119,8 @@ body{
 
 .MuiButtonGroup-root{
   width: 100% !important;
+}
+
+.padding-bottom-warehouse{
+  padding-bottom: 80px;
 }

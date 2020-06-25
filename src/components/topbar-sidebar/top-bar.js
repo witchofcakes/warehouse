@@ -7,6 +7,7 @@ import InputBase from '@material-ui/core/InputBase';
 import Toolbar from '@material-ui/core/Toolbar';
 import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton';
+import logo from "../../images/logo.png"
 
 import Popper from '@material-ui/core/Popper';
 import { ClickAwayListener } from '@material-ui/core';
@@ -65,7 +66,7 @@ class TopBar extends React.Component {
                         <div className="col-12 sidebar-column">
                             <div>
                                 <a className="navbar-brand-sidebar" href="/">
-                                    {/*<span className="logo-mount-sidebar">M.W.G.A</span>*/}
+                                    <img src={logo} className="logo-mount-sidebar"/>
                                 </a>
                             </div>
                         </div>
