@@ -9,6 +9,7 @@ import SideBar from "../topbar-sidebar/side-bar";
 import CardCategory from "./category-card";
 import axios from "axios";
 import RowOrder from "../all-items/table/table-row";
+import CryptoJS from "crypto-js";
 
 const drawerWidth = 240;
 
@@ -124,6 +125,34 @@ const styles = theme => ({
 });
 
 class AllCategories extends React.Component {
+
+    encryptFun(data) {
+
+        var key  = CryptoJS.enc.Latin1.parse('1234567812345678');
+        var iv   = CryptoJS.enc.Latin1.parse('1234567812345678');
+        var encrypted = CryptoJS.AES.encrypt(
+            data,
+            key,
+            {iv:iv,mode:CryptoJS.mode.CBC,padding:CryptoJS.pad.ZeroPadding
+            });
+        console.log('encrypted: ' + encrypted) ;
+
+        return encrypted;
+
+    }
+
+    decryptFun(data) {
+
+        var key  = CryptoJS.enc.Latin1.parse('1234567812345678');
+        var iv   = CryptoJS.enc.Latin1.parse('1234567812345678');
+
+
+        var decrypted = CryptoJS.AES.decrypt(data,key,{iv:iv,padding:CryptoJS.pad.ZeroPadding});
+        // console.log('decrypted: '+decrypted.toString(CryptoJS.enc.Utf8));
+
+        return decrypted.toString(CryptoJS.enc.Utf8);
+    }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -131,21 +160,24 @@ class AllCategories extends React.Component {
 
             groups: [],
         };
+
+        this.encryptFun = this.encryptFun.bind(this);
+        this.decryptFun = this.decryptFun.bind(this);
     }
 
     componentDidMount() {
         const token = localStorage.getItem('token')
 
-        axios.get('http://localhost:5000/api/group/getAll', { headers: { 'Authorization': token } })
+        axios.get('http://localhost:5000/api/group/getAll', { headers: { 'Authorization': token, 'Content-Type': 'application/x-www-form-urlencoded'}  })
             .then(response => {
                 this.setState({
-                    groups: response.data.groups
+                    groups: JSON.parse(this.decryptFun(response.data)).groups
                 });
-                console.log(this.state.groups)
             })
             .catch(function(error) {
                 console.log(error);
             });
+        console.log("groups " + this.state.groups)
     }
 
     handleDrawerOpen = () => {

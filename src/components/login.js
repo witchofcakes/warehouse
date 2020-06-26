@@ -177,7 +177,7 @@ export default class Login extends React.Component{
                 window.location.reload();
 
             }).catch(error => {
-                alert(error);
+                console.log(error);
             });
         }
     }

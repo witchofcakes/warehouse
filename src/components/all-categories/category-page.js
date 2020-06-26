@@ -16,6 +16,7 @@ import PopupDeleteGroup from "./popup-delete-group";
 import EmptyCategoryPage from "./empty-category-page";
 import PopupAddItem from "./popup-add-item-group";
 import PopupAddItemOneGroup from "./popup-add-item-group";
+import CryptoJS from "crypto-js";
 
 const drawerWidth = 240;
 
@@ -131,6 +132,34 @@ const styles = theme => ({
 });
 
 class CategoryPage extends React.Component {
+
+    encryptFun(data) {
+
+        var key  = CryptoJS.enc.Latin1.parse('1234567812345678');
+        var iv   = CryptoJS.enc.Latin1.parse('1234567812345678');
+        var encrypted = CryptoJS.AES.encrypt(
+            data,
+            key,
+            {iv:iv,mode:CryptoJS.mode.CBC,padding:CryptoJS.pad.ZeroPadding
+            });
+        console.log('encrypted: ' + encrypted) ;
+
+        return encrypted;
+
+    }
+
+    decryptFun(data) {
+
+        var key  = CryptoJS.enc.Latin1.parse('1234567812345678');
+        var iv   = CryptoJS.enc.Latin1.parse('1234567812345678');
+
+
+        var decrypted = CryptoJS.AES.decrypt(data,key,{iv:iv,padding:CryptoJS.pad.ZeroPadding});
+        // console.log('decrypted: '+decrypted.toString(CryptoJS.enc.Utf8));
+
+        return decrypted.toString(CryptoJS.enc.Utf8);
+    }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -141,6 +170,9 @@ class CategoryPage extends React.Component {
             group_descr: '',
             group_name: '',
         };
+
+        this.encryptFun = this.encryptFun.bind(this);
+        this.decryptFun = this.decryptFun.bind(this);
     }
 
     componentDidMount() {
@@ -149,9 +181,9 @@ class CategoryPage extends React.Component {
         axios.get('http://localhost:5000/api/group/getOne/' + this.state.categoryID, { headers: { 'Authorization': token } })
             .then(response => {
                 this.setState({
-                    productsCategory: response.data.products,
-                    group_descr: response.data.group_descr,
-                    group_name: response.data.group_name,
+                    productsCategory:  JSON.parse(this.decryptFun(response.data)).products,
+                    group_descr:  JSON.parse(this.decryptFun(response.data)).group_descr,
+                    group_name:  JSON.parse(this.decryptFun(response.data)).group_name,
                 });
                 console.log(this.state.productsCategory)
             })

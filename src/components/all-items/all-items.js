@@ -176,7 +176,7 @@ class AllItems extends React.Component {
         axios.get('http://localhost:5000/api/good/getAll', { headers: { 'Authorization': token } })
             .then(response => {
                 this.setState({
-                    products: response.data.products
+                    products: JSON.parse(this.decryptFun(response.data)).products
                 });
                 console.log(this.state.products)
             })

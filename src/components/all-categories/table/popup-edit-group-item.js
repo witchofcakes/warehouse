@@ -27,6 +27,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import axios from "axios";
 import qs from "querystring";
 import Tooltip from "@material-ui/core/Tooltip";
+import CryptoJS from "crypto-js";
 
 const CssTextField = withStyles({
     root: {
@@ -45,6 +46,33 @@ const CssTextField = withStyles({
 })(TextField);
 
 export default class PopupEditGroupItem extends React.Component{
+
+    encryptFun(data) {
+
+        var key  = CryptoJS.enc.Latin1.parse('1234567812345678');
+        var iv   = CryptoJS.enc.Latin1.parse('1234567812345678');
+        var encrypted = CryptoJS.AES.encrypt(
+            data,
+            key,
+            {iv:iv,mode:CryptoJS.mode.CBC,padding:CryptoJS.pad.ZeroPadding
+            });
+        console.log('encrypted: ' + encrypted) ;
+
+        return encrypted;
+
+    }
+
+    decryptFun(data) {
+
+        var key  = CryptoJS.enc.Latin1.parse('1234567812345678');
+        var iv   = CryptoJS.enc.Latin1.parse('1234567812345678');
+
+
+        var decrypted = CryptoJS.AES.decrypt(data,key,{iv:iv,padding:CryptoJS.pad.ZeroPadding});
+        // console.log('decrypted: '+decrypted.toString(CryptoJS.enc.Utf8));
+
+        return decrypted.toString(CryptoJS.enc.Utf8);
+    }
 
     constructor(props){
         super(props);
@@ -72,6 +100,9 @@ export default class PopupEditGroupItem extends React.Component{
         this.handleChange = this.handleChange.bind(this);
         this.addAmount = this.addAmount.bind(this);
         this.reduceAmount = this.reduceAmount.bind(this);
+
+        this.encryptFun = this.encryptFun.bind(this);
+        this.decryptFun = this.decryptFun.bind(this);
     }
 
     handleChange(event) {
@@ -100,14 +131,14 @@ export default class PopupEditGroupItem extends React.Component{
         axios.get('http://localhost:5000/api/good/getOne/' + this.props.itemID, { headers: { 'Authorization': token, 'Content-Type': 'application/x-www-form-urlencoded' } })
             .then(response => {
                 this.setState({
-                    productName: response.data.product_name,
-                    product_amount: response.data.product_amount,
-                    productDescr: response.data.product_descr,
-                    productManufacturer: response.data.product_manufacturer,
-                    product_price: response.data.product_price,
-                    productGroupId: response.data.product_group_id,
-                    productGroupName: response.data.product_group_name,
-                    productId: response.data.id
+                    productName: JSON.parse(this.decryptFun(response.data)).product_name,
+                    product_amount: JSON.parse(this.decryptFun(response.data)).product_amount,
+                    productDescr: JSON.parse(this.decryptFun(response.data)).product_descr,
+                    productManufacturer: JSON.parse(this.decryptFun(response.data)).product_manufacturer,
+                    product_price: JSON.parse(this.decryptFun(response.data)).product_price,
+                    productGroupId: JSON.parse(this.decryptFun(response.data)).product_group_id,
+                    productGroupName: JSON.parse(this.decryptFun(response.data)).product_group_name,
+                    productId: JSON.parse(this.decryptFun(response.data)).id
                 });
                 console.log(response.data)
             })

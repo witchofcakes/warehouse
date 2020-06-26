@@ -132,7 +132,7 @@ class RowOrder extends React.Component {
                     <TableCell className="vac-row-date empty-more-button-cell no-gutters-left" align="center">
                         <PopupDeleteItem name={this.props.name} itemID={this.props.index}/>
                     </TableCell>
-
+                    {console.log("index props" + this.props.index)}
                 </TableRow>
             // }
             // >

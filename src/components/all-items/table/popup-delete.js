@@ -12,6 +12,7 @@ import qs from 'querystring'
 
 import axios from "axios";
 import Tooltip from "@material-ui/core/Tooltip";
+import TableRow from "@material-ui/core/TableRow";
 
 const CssTextField = withStyles({
     root: {
@@ -54,10 +55,10 @@ export default class PopupDeleteItem extends React.Component{
 
         axios.delete('http://localhost:5000/api/good/delete/' + parameter, { headers: { 'Authorization': token, 'Content-Type': 'application/x-www-form-urlencoded' } })
             .then(
-                window.location.reload()
+                // window.location.reload()
             )
-            .catch(err=> console.log(err));
-
+            .catch(err=>alert(err));
+            console.log("parameter " + parameter)
     }
 
     render() {
@@ -99,6 +100,7 @@ export default class PopupDeleteItem extends React.Component{
                                 <button onClick={this.deleteItem.bind(this, this.props.itemID)} className="button-popup-delete">
                                     Видалити товар
                                 </button>
+                                {console.log("delete " + this.props.itemID)}
                             </div>
                         </div>
 
