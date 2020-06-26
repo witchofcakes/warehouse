@@ -20,48 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f82bfa11-04e9-4070-aa9e-0fedc42908f9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/UserContext.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/all-categories/empty-category-page.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/all-categories/popup-add-item-group.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/all-categories/popup-delete-group.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/all-categories/popup-edit-group.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/all-categories/table/popup-delete-group-item.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/all-categories/table/popup-edit-group-item.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/all-categories/table/table-category-row.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/all-categories/table/table-category.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/all-items/table/popup-edit.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/empty-search-page.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/search-page.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/topbar-sidebar/popups/popup-create-group.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/all-categories/all-categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/all-categories/all-categories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/all-categories/category-card.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/all-categories/category-card.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/all-categories/category-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/all-categories/category-page.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/all-items/all-items.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/all-items/all-items.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/all-items/statistics-card.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/all-items/statistics-card.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/all-items/table/popup-delete.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/all-items/table/popup-delete.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/all-items/table/table-all-items.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/all-items/table/table-all-items.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/all-items/table/table-row.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/all-items/table/table-row.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/item-page/popup-item-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/item-page/popup-item-page.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/topbar-sidebar/popups/popup-create-items.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/topbar-sidebar/popups/popup-create-items.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/topbar-sidebar/side-bar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/topbar-sidebar/side-bar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/topbar-sidebar/top-bar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/topbar-sidebar/top-bar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/icons/copy.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/icons/copy.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/icons/credit-card.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/icons/credit-card.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/icons/star.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/icons/star.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/icons/truck.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/icons/truck.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/routes/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stylesheets/all-categories.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/stylesheets/all-categories.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stylesheets/item-creation.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/stylesheets/item-creation.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stylesheets/item-page.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/stylesheets/item-page.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stylesheets/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/stylesheets/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/stylesheets/table-items.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/stylesheets/table-items.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +90,7 @@
       <updated>1593004740988</updated>
       <workItem from="1593004743733" duration="39444000" />
       <workItem from="1593091956461" duration="597000" />
-      <workItem from="1593092580935" duration="59627000" />
+      <workItem from="1593092580935" duration="61607000" />
     </task>
     <servers />
   </component>

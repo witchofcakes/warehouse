@@ -7,6 +7,8 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 
+import CryptoJS from 'crypto-js' ;
+
 import axios from "axios"
 
 import {withStyles,} from '@material-ui/core/styles';
@@ -36,6 +38,33 @@ export default class Login extends React.Component{
 
     static contextType = UserContext
 
+    encryptFun(data) {
+
+        var key  = CryptoJS.enc.Latin1.parse('1234567812345678');
+        var iv   = CryptoJS.enc.Latin1.parse('1234567812345678');
+        var encrypted = CryptoJS.AES.encrypt(
+            data,
+            key,
+            {iv:iv,mode:CryptoJS.mode.CBC,padding:CryptoJS.pad.ZeroPadding
+            });
+        console.log('encrypted: ' + encrypted) ;
+
+        return encrypted;
+
+    }
+
+    decryptFun(data) {
+
+        var key  = CryptoJS.enc.Latin1.parse('1234567812345678');
+        var iv   = CryptoJS.enc.Latin1.parse('1234567812345678');
+
+
+        var decrypted = CryptoJS.AES.decrypt(data,key,{iv:iv,padding:CryptoJS.pad.ZeroPadding});
+        // console.log('decrypted: '+decrypted.toString(CryptoJS.enc.Utf8));
+
+        return decrypted.toString(CryptoJS.enc.Utf8);
+    }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -47,6 +76,9 @@ export default class Login extends React.Component{
         };
 
         this.handleChange = this.handleChange.bind(this);
+        this.encryptFun = this.encryptFun.bind(this);
+
+        this.decryptFun = this.decryptFun.bind(this);
     }
 
     handleChange = evt => {
@@ -118,7 +150,16 @@ export default class Login extends React.Component{
 
     handleLogin(token, setToken){
 
-        const { login, password } = this.state;
+        const login = this.encryptFun(this.state.login)
+
+        console.log(login);
+
+        const password = this.encryptFun(this.state.password)
+
+        console.log(password);
+
+
+        // const { login, password } = this.state;
 
         if (!password || !login) {
             alert("Будь ласка, заповніть всі поля")
@@ -128,11 +169,12 @@ export default class Login extends React.Component{
 
             axios.get(`http://localhost:5000/api/login/?login=${login}&password=${password}`).then(response => {
 
-                const newToken = response.data
+                const newToken = this.decryptFun(response.data)
                 setToken(newToken)
+
                 console.log("newToken: " + newToken)
                 this.props.history.push('/all-items');
-                // window.location.reload();
+                window.location.reload();
 
             }).catch(error => {
                 alert(error);

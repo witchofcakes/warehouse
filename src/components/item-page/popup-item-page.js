@@ -1,8 +1,10 @@
 import React from "react";
 import Popup from "reactjs-popup";
 import x from "../../images/icons/x.svg";
+import CryptoJS from "crypto-js";
 
 export default class PopupPage extends React.Component{
+
     render() {
         return(
             <Popup id={"max-height-popup"} lockScroll={true} modal closeOnDocumentClick trigger={

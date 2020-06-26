@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 import TopBar from "../topbar-sidebar/top-bar";
+import CryptoJS from 'crypto-js' ;
 import SideBar from "../topbar-sidebar/side-bar";
 import CardCategory from "../all-categories/category-card";
 import TableAllItems from "./table/table-all-items";
@@ -126,6 +127,34 @@ const styles = theme => ({
 });
 
 class AllItems extends React.Component {
+
+    encryptFun(data) {
+
+        var key  = CryptoJS.enc.Latin1.parse('1234567812345678');
+        var iv   = CryptoJS.enc.Latin1.parse('1234567812345678');
+        var encrypted = CryptoJS.AES.encrypt(
+            data,
+            key,
+            {iv:iv,mode:CryptoJS.mode.CBC,padding:CryptoJS.pad.ZeroPadding
+            });
+        console.log('encrypted: ' + encrypted) ;
+
+        return encrypted;
+
+    }
+
+    decryptFun(data) {
+
+        var key  = CryptoJS.enc.Latin1.parse('1234567812345678');
+        var iv   = CryptoJS.enc.Latin1.parse('1234567812345678');
+
+
+        var decrypted = CryptoJS.AES.decrypt(data,key,{iv:iv,padding:CryptoJS.pad.ZeroPadding});
+        // console.log('decrypted: '+decrypted.toString(CryptoJS.enc.Utf8));
+
+        return decrypted.toString(CryptoJS.enc.Utf8);
+    }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -136,6 +165,9 @@ class AllItems extends React.Component {
             product_sum_price: null,
             product_amount: null
         };
+
+        this.encryptFun = this.encryptFun.bind(this);
+        this.decryptFun = this.decryptFun.bind(this);
     }
 
     componentDidMount() {
@@ -155,11 +187,14 @@ class AllItems extends React.Component {
         axios.get('http://localhost:5000/api/good/getStats', { headers: { 'Authorization': token } })
             .then(response => {
                 this.setState({
-                    group_amount: response.data.group_amount,
-                    product_sum_price: response.data.product_sum_price,
-                    product_amount: response.data.product_amount,
+                    group_amount: JSON.parse(this.decryptFun(response.data)).group_amount,
+                    product_sum_price: JSON.parse(this.decryptFun(response.data)).product_sum_price,
+                    product_amount: JSON.parse(this.decryptFun(response.data)).product_amount,
                 });
-                console.log(response.data.group_amount)
+
+                const tmp = this.decryptFun(response.data)
+
+                console.log(JSON.parse(tmp).group_amount)
             })
             .catch(function(error) {
                 console.log(error);
