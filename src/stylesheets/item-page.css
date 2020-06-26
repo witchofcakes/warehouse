@@ -20,8 +20,27 @@
 }
 
 .delete-item-popup-text{
-    text-align: left;
-    font-size: 18px;
+    text-align: center;
+    font-size: 20px;
     color: #212529;
     margin-bottom: 20px;
+}
+
+.description-group-page{
+    color: #212529;
+    font-size: 16px;
+    margin-bottom: 45px;
+    margin-top: -25px;
+}
+
+#margin-bottom-page-group{
+    margin-bottom: 60px;
+}
+
+.padding-button-delete{
+    padding-top: 40px;
+}
+
+.padding-button-text-delete{
+    padding-top: 40px;
 }

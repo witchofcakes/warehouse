@@ -1,6 +1,6 @@
 import React from 'react';
 
-import x from "../../../images/icons/x.svg";
+import x from "../../images/icons/x.svg"
 
 import Popup from "reactjs-popup";
 import {withStyles} from "@material-ui/core/styles";
@@ -26,6 +26,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import axios from "axios";
 import qs from "querystring";
+import Tooltip from "@material-ui/core/Tooltip";
 
 const CssTextField = withStyles({
     root: {
@@ -43,15 +44,7 @@ const CssTextField = withStyles({
     },
 })(TextField);
 
-// const styles = theme => ({
-//     notchedOutline: {
-//         borderWidth: "1px",
-//         borderColor: "yellow !important"
-//     }
-// });
-
-
-export default class PopupCreate extends React.Component{
+export default class PopupAddItemOneGroup extends React.Component{
 
     constructor(props){
         super(props);
@@ -98,20 +91,6 @@ export default class PopupCreate extends React.Component{
         this.setState({
             product_amount: newAmount
         })
-    }
-
-    componentDidMount() {
-        const token = localStorage.getItem('token')
-
-        axios.get('http://localhost:5000/api/group/getAll', { headers: { 'Authorization': token, 'Content-Type': 'application/x-www-form-urlencoded' } })
-            .then(response => {
-                this.setState({
-                    groups: response.data.groups,
-                });
-            })
-            .catch(function(error) {
-                console.log(error);
-            });
     }
 
     handleItemAdd = (e) => {
@@ -176,8 +155,11 @@ export default class PopupCreate extends React.Component{
         return (
 
             <Popup lockScroll={true} modal closeOnDocumentClick trigger={
-                <button className="create-vac-employer">
-                    Створити товар
+                <button className="button-edit-group">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="feather-plus-item-category">
+                        <line x1="12" y1="5" x2="12" y2="19"/>
+                        <line x1="5" y1="12" x2="19" y2="12"/>
+                    </svg>
                 </button>
             }
             >
@@ -228,7 +210,6 @@ export default class PopupCreate extends React.Component{
                                         Вилучити товар
                                     </Button>
                                     <CssTextField
-                                        type={"number"}
                                         name="product_amount"
                                         required
                                         value={this.state.product_amount}
@@ -245,7 +226,6 @@ export default class PopupCreate extends React.Component{
                             <div className="row margin-bottom-create-item align-items-center">
                                 <div className="col-10">
                                     <CssTextField
-                                        type={"number"}
                                         name="amountRemove"
                                         value={this.state.amountRemove}
                                         onChange={this.handleChange}
@@ -267,7 +247,6 @@ export default class PopupCreate extends React.Component{
                             <div className="row margin-bottom-create-item align-items-center">
                                 <div className="col-10">
                                     <CssTextField
-                                        type={"number"}
                                         name="amountAdd"
                                         value={this.state.amountAdd}
                                         onChange={this.handleChange}
@@ -303,19 +282,13 @@ export default class PopupCreate extends React.Component{
                             <div className="col-12" id="outlined-select-currency">
                                 <CssTextField
                                     required
+                                    disabled
                                     name="productGroupId"
-                                    select
-                                    value={this.state.productGroupId}
-                                    label="Категорія"
+                                    value={this.props.groupName}
                                     onChange={this.handleChange}
                                     variant="outlined"
-                                >
-                                    {this.state.groups.map((option) => (
-                                        <MenuItem key={option.group_name} value={option.group_id}>
-                                            {option.group_name}
-                                        </MenuItem>
-                                    ))}
-                                </CssTextField>
+                                    label={"Категорія"}
+                                />
                             </div>
                         </div>
 
@@ -323,14 +296,12 @@ export default class PopupCreate extends React.Component{
                             <div className="col-12">
                                 <CssTextField
                                     required={true}
-                                    id={"padding-input"}
-                                    type={"number"}
                                     className="margin-bottom-create-item"
                                     name={'product_price'}
                                     label="Ціна товару"
                                     value={this.state.product_price}
                                     onChange={this.handleChange}
-                                    variant="outlined"
+                                    variant={"outlined"}
                                 />
                             </div>
                         </div>
@@ -344,7 +315,7 @@ export default class PopupCreate extends React.Component{
                                     multiline
                                     rows={6}
                                     required
-                                    id="outlined-text-email-desription"
+                                    id="outlined-text-email"
                                     label="Опис товару"
                                     variant="outlined"
                                 />

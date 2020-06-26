@@ -7,13 +7,21 @@
     text-align: left;
 }
 
+#delete-modal .popup-content {
+    width: 35% !important;
+    border-radius: 10px !important;
+    padding: 40px 40px 50px 40px !important;
+    text-align: center;
+}
+
 .popup-content {
     width: 60% !important;
-    /*top: 60px !important;*/
-    /*margin-bottom: 80px !important;*/
+    top: 60px !important;
+    margin-bottom: 80px !important;
     border-radius: 10px !important;
     padding: 40px 40px 50px 40px !important;
     text-align: left;
+    min-height: 80vh !important;
 }
 
 .popup-overlay{
@@ -55,15 +63,15 @@
     to {opacity: 1;}
 }
 
-#outlined-select-currency .MuiSvgIcon-root{
-    margin-top: -2px;
-}
-
 .button-amount{
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18) !important;
-    border: 1px solid #ebebec !important;
-    border-radius: 50% !important;
+    /*box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18) !important;*/
+    /*border: 1px solid #ebebec !important;*/
+    border-radius: 5px !important;
     background: white !important;
+    text-transform: none !important;
+    font-family: "GolosTextWeb", sans-serif !important;
+    color: #212529 !important;
+    letter-spacing: unset !important;
 }
 
 .MuiButtonGroup-grouped.MuiButtonGroup-groupedHorizontal.MuiButtonGroup-groupedOutlined.MuiButtonGroup-groupedOutlinedHorizontal.MuiButtonGroup-groupedOutlined.button-amount.button-add-amount {
@@ -71,9 +79,81 @@
 }
 
 .MuiButtonGroup-grouped.MuiButtonGroup-groupedHorizontal.MuiButtonGroup-groupedOutlined.MuiButtonGroup-groupedOutlinedHorizontal.MuiButtonGroup-groupedOutlined.button-amount.button-reduce-amount {
-    margin-left: 25px;
+    /*margin-left: 25px;*/
+    margin-right: 25px !important;
 }
 
 .margin-bottom-create-item{
     margin-bottom: 35px;
+}
+
+.button-popup-delete{
+    background: #FE5F55;
+    padding: 10px 15px;
+    font-weight: 600;
+    color: white;
+    border: 1.5px solid #FE5F55;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.button-popup-cancel{
+    background: white;
+    padding: 10px 15px;
+    border: 1.5px solid #212529;
+    font-weight: 600;
+    color: #212529;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-right: 20px;
+
+}
+
+.search-no-results-employer{
+    width: 26% !important;
+}
+
+.search-no-results-employer-search{
+    width: 34% !important;
+}
+
+.not-found-big-empty{
+    color: #212529;
+    font-weight: 600;
+    font-size: 25px;
+    margin-bottom: 0;
+}
+
+.search-query-span{
+    text-transform: none !important;
+}
+
+.MuiButtonGroup-grouped{
+    min-width: 170px !important;
+}
+
+.MuiButtonGroup-groupedOutlinedHorizontal:not(:last-child){
+    border-right: 1px solid rgba(0, 0, 0, 0.23) !important;
+}
+
+.save-button-popup{
+    background: #212529;
+    border: 1px solid #212529;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.collapse-line-popup{
+    height: 1px;
+    background: #ffe2e2;
+    margin-bottom: 25px;
+    margin-top: -10px;
+}
+
+.padding-delete-group{
+    padding: 20px;
 }

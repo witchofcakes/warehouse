@@ -4,11 +4,16 @@ import { withStyles } from '@material-ui/core';
 
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-import TopBar from "../topbar-sidebar/top-bar";
-import SideBar from "../topbar-sidebar/side-bar";
-import CardCategory from "./category-card";
+import TopBar from "./topbar-sidebar/top-bar";
+import SideBar from "./topbar-sidebar/side-bar";
+import TableAllItems from "./all-items/table/table-all-items";
+
+import Tooltip from "@material-ui/core/Tooltip";
+
 import axios from "axios";
-import RowOrder from "../all-items/table/table-row";
+
+import EmptyCategoryPage from "./all-categories/empty-category-page";
+import EmptySearchPage from "./empty-search-page";
 
 const drawerWidth = 240;
 
@@ -123,29 +128,37 @@ const styles = theme => ({
     },
 });
 
-class AllCategories extends React.Component {
+class SearchPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             openDrawer: true,
-
-            groups: [],
+            products: [],
         };
     }
 
     componentDidMount() {
         const token = localStorage.getItem('token')
+        let search = window.location.search;
+        let params = new URLSearchParams(search);
+        let query = params.get('query');
 
-        axios.get('http://localhost:5000/api/group/getAll', { headers: { 'Authorization': token } })
+        this.setState({
+            query: query
+        })
+
+        axios.get(`http://localhost:5000/api/good/search?query=${query}`, { headers: { 'Authorization': token, 'Content-Type': 'application/x-www-form-urlencoded' } })
             .then(response => {
                 this.setState({
-                    groups: response.data.groups
+                    products: response.data.products
                 });
-                console.log(this.state.groups)
             })
             .catch(function(error) {
                 console.log(error);
             });
+
+
+
     }
 
     handleDrawerOpen = () => {
@@ -156,68 +169,28 @@ class AllCategories extends React.Component {
         this.setState({ openDrawer: false });
     };
 
-    colorBackground(id){
-        if(id%2==0){
-            return "block-activities-yellow"
-        }
-
-        if(id%3==0){
-            return "block-activities-red"
-        }
-
-        if((id%3!=0) && (id%2!=0)){
-            return "block-activities-white"
-        }
-
-    }
-
-    arrowColorBackground(id){
-        if(id%2==0){
-            return "arrow-activities-yellow"
-        }
-
-        if(id%3==0){
-            return "arrow-activities-red"
-        }
-
-        if((id%3!=0) && (id%2!=0)){
-            return "arrow-activities-blue"
-        }
-
-    }
-
     ContentDesktop() {
         const { classes } = this.props;
 
         return (
             <div className={classes.content}>
                 <div className={classes.toolbar} />
+
                 <div className="row">
-                    <div className="col-12">
-                        <div className="text-main-title-cabinet">Всі групи товарів</div>
+                    <div className="col-8">
+                        <div className="text-main-title-cabinet">Результати запиту
+                            "<span className="search-query-span">{this.state.query}</span>"
+                        </div>
                     </div>
                 </div>
-                <div className="row"  id={"categories-cards-margin"}>
 
-                    {
-                        this.state.groups.map((item, idx) => {
-                            return (
-                                <CardCategory
-                                    categoryID={item.group_id}
-                                    description={item.group_descr}
-                                    group_name={item.group_name}
-                                    classBackground = {
-                                        this.colorBackground(item.group_id)
-                                    }
-                                    arrowBackground = {
-                                        this.arrowColorBackground(item.group_id)
-                                    }
-                                />
-                            );
-                        })
-                    }
+                {
+                    this.state.products.length!==0 ?
+                        <TableAllItems products={this.state.products}/>
+                        :
+                        <EmptySearchPage/>
+                }
 
-                </div>
             </div>
         );
     }
@@ -227,7 +200,7 @@ class AllCategories extends React.Component {
         const { classes, theme } = this.props;
 
         return (
-            <div>
+            <div className="padding-bottom-warehouse">
                 <div className="employer-cabinet-display">
                     <CssBaseline />
                     <TopBar
@@ -248,4 +221,4 @@ class AllCategories extends React.Component {
         );
     }
 }
-export default withStyles(styles, { withTheme: true })(AllCategories);
+export default withStyles(styles, { withTheme: true })(SearchPage);

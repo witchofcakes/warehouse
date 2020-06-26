@@ -10,41 +10,29 @@ import Paper from '@material-ui/core/Paper';
 import TableCell from '@material-ui/core/TableCell';
 import RowOrder from "./table-row"
 import axios from "axios";
+import UserContext from "../../../UserContext";
 
 export default class TableOrders extends React.Component {
+    static contextType = UserContext
 
     constructor(props) {
         super(props);
         this.state = {
-
-            items: [
-                {
-                    id: 1, product_name: "Крупа гречана", product_description: "Це найкраща гречка з усіх! Неймовірний смак. Це найкраща гречка з усіх! Неймовірний смак.", product_manufacturer: "Київський Хліб", product_group_name: "Крупи", product_amount: 2, product_price: 52,
-                }
-            ],
+            // items: [
+            //     {
+            //         id: 1, product_name: "Крупа гречана", product_description: "Це найкраща гречка з усіх! Неймовірний смак. Це найкраща гречка з усіх! Неймовірний смак.", product_manufacturer: "Київський Хліб", product_group_name: "Крупи", product_amount: 2, product_price: 52,
+            //     }
+            // ],
         };
     }
 
-    componentDidMount() {
-        axios
-            .get('http://localhost:4000/api/orders/getUserOrder/')
-            .then(response => {
-                this.setState({
-                    items: response.data,
-                });
-                console.log(this.state.items);
-                // console.log(this.state.ordersCamps);
-            })
-            .catch(function(error) {
-                console.log(error);
-            });
-    }
-
     render() {
+
+
         return (
             <Paper className="container-table-paper">
                 <TableContainer className="container-mui-table">
-                        <Table stickyHeader aria-label="simple table" className="table-width">
+                        <Table className="table-width">
                             <TableHead className="table-head">
                                 <TableRow>
                                     <TableCell className="table-head" align="left">
@@ -56,7 +44,7 @@ export default class TableOrders extends React.Component {
                                     <TableCell align="left">Виробник</TableCell>
                                     <TableCell align="left">Категорія</TableCell>
                                     <TableCell align="left">Ціна</TableCell>
-                                    <TableCell align="left">Сума</TableCell>
+                                    <TableCell align="left">Сума всього</TableCell>
                                     <TableCell/>
                                     <TableCell/>
                                 </TableRow>
@@ -64,13 +52,13 @@ export default class TableOrders extends React.Component {
 
                             <TableBody>
                                 {
-                                    this.state.items.map((item, idx) => {
+                                    this.props.products.map((item, idx) => {
                                         return (
                                             <RowOrder
-                                                index={item.id}
+                                                index={item.product_id}
                                                 name={item.product_name}
-                                                description={item.product_description}
-                                                manufacturer={item.product_manufacturer}
+                                                description={item.product_descr}
+                                                manufacturer={item.product_manuf}
                                                 amount={item.product_amount}
                                                 group_name={item.product_group_name}
                                                 price={item.product_price}
@@ -81,7 +69,7 @@ export default class TableOrders extends React.Component {
                             </TableBody>
                         </Table>
                 </TableContainer>
-                {/*</div>*/}
+
             </Paper>
         )
     }

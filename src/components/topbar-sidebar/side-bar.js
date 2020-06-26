@@ -10,11 +10,17 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 
+import {withRouter} from 'react-router-dom'
+
 import Drawer from '@material-ui/core/Drawer';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import axios from "axios";
+import UserContext from "../../UserContext";
 
-export default class SideBar extends React.Component {
+class SideBar extends React.Component {
+    static contextType = UserContext
+
     constructor(props) {
         super(props);
         this.state = {
@@ -24,8 +30,19 @@ export default class SideBar extends React.Component {
         };
     }
 
+    handleLogout(token, setToken){
+
+        const newToken = 0
+        setToken(newToken)
+        console.log("newToken: " + newToken)
+        this.props.history.push('/');
+        window.location.reload();
+
+    }
+
     render() {
         const { classes, theme, open, handleDrawerClose } = this.props;
+        const { token, setToken } = this.context
 
         return (
             <Drawer
@@ -98,10 +115,10 @@ export default class SideBar extends React.Component {
                 <List id="bottom-button">
                     <Divider id="bottom-divider" />
 
-                    <NavLink
+                    <button
                         activeClassName="employer-left-active"
-                        className="all-vac-employer-sidebar"
-                        to={`/login`}
+                        className="all-vac-employer-sidebar button-logout"
+                        onClick={() => {this.handleLogout(token, setToken)}}
                     >
                         <ListItem button className={classes.sideText}>
                             <ListItemIcon>
@@ -118,9 +135,11 @@ export default class SideBar extends React.Component {
                             </ListItemIcon>
                             <ListItemText className={'text-sidebar'} primary={'Вийти'} />
                         </ListItem>
-                    </NavLink>
+                    </button>
                 </List>
             </Drawer>
         );
     }
 }
+
+export default withRouter(SideBar);

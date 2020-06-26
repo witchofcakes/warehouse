@@ -1,6 +1,18 @@
 import React from "react"
 
 export default class CardStatistics extends React.Component{
+
+    productPrice() {
+        const nf = new Intl.NumberFormat("ukr", {
+            style: "currency",
+            currency: "UAH",
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+        });
+
+        return (nf.format(this.props.product_sum_price))
+    }
+
     render() {
         return (
             <div className="row">
@@ -18,8 +30,8 @@ export default class CardStatistics extends React.Component{
                             </div>
                         </div>
                         <div className="price-div-inline">
-                            <p className="price-number-statistics">12</p>
-                            <p className="overall-price-statistics">Кількість груп товарів</p>
+                            <p className="price-number-statistics">{this.props.group_amount}</p>
+                            <p className="overall-price-statistics">Кількість груп</p>
                         </div>
                     </div>
                 </div>
@@ -35,7 +47,7 @@ export default class CardStatistics extends React.Component{
                             </div>
                         </div>
                         <div className="price-div-inline">
-                            <p className="price-number-statistics">₴35,000</p>
+                            <p className="price-number-statistics">{this.productPrice()}</p>
                             <p className="overall-price-statistics">Загальна вартість</p>
                         </div>
                     </div>
@@ -55,7 +67,7 @@ export default class CardStatistics extends React.Component{
                             </div>
                         </div>
                         <div className="price-div-inline">
-                            <p className="price-number-statistics">150</p>
+                            <p className="price-number-statistics">{this.props.product_amount}</p>
                             <p className="overall-price-statistics">Кількість товарів</p>
                         </div>
                     </div>

@@ -74,10 +74,6 @@ button:focus{
   font-family: "GolosTextWeb", sans-serif !important;
 }
 
-.MuiOutlinedInput-input{
-  padding: 16px 14px !important;
-}
-
 body{
   /*background: #fafaff !important;*/
   background: #fffcfc !important;
@@ -99,6 +95,10 @@ body{
 
 .MuiInputLabel-outlined{
   font-size: 16px !important;
+}
+
+.MuiInputLabel-outlined.Mui-focused{
+  color: #212529 !important;
 }
 
 .MuiInputBase-input{
@@ -123,4 +123,46 @@ body{
 
 .padding-bottom-warehouse{
   padding-bottom: 80px;
+}
+
+.MuiInputBase-input{
+  font-family: "GolosTextWeb", sans-serif !important;
+}
+
+legend{
+  font-family: "GolosTextWeb", sans-serif !important;
+}
+
+/*.MuiInputBase-root.MuiOutlinedInput-root.Mui-focused{*/
+/*  border-color: #212529 !important;*/
+/*}*/
+
+
+.MuiFormControl-colorPrimary{
+  color: #212529 !important
+}
+
+/*.MuiOutlinedInput-notchedOutline > .Mui-focused{*/
+/*  border-color: #212529 !important;*/
+/*}*/
+
+/*.MuiInputBase-input {*/
+/*  font: inherit;*/
+/*  color: #212529 !important;*/
+/*  width: 100%;*/
+/*  border: 0;*/
+/*  height: 1.4876em !important;*/
+/*}*/
+
+/*#outlined-text-email-desription .MuiInputBase-input {*/
+/*  font: inherit;*/
+/*  color: #212529 !important;*/
+/*  width: 100%;*/
+/*  border: 0;*/
+/*  height: 1.1876em !important;*/
+/*}*/
+
+.button-logout{
+  background: unset;
+  border: none;
 }

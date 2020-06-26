@@ -1,9 +1,11 @@
 import React from 'react';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { Switch, Route, BrowserRouter, withRouter } from 'react-router-dom';
+
 import Login from "../components/login";
 import AllCategories from "../components/all-categories/all-categories";
 import AllItems from "../components/all-items/all-items";
 import CategoryPage from "../components/all-categories/category-page";
+import SearchPage from "../components/search-page";
 
 class Main extends React.Component {
 
@@ -17,10 +19,11 @@ class Main extends React.Component {
             <div>
                 <BrowserRouter>
                     <Switch>
-                        <Route path="/login" component={Login}/>
+                        <Route exact path="/" component={Login}/>
                         <Route path="/all-categories" component={AllCategories}/>
                         <Route path="/all-items" component={AllItems}/>
-                        <Route path="/category-page" component={CategoryPage}/>
+                        <Route path="/search-page" component={SearchPage}/>
+                        <Route path="/category-page/:id" component={CategoryPage}/>
                         {/*<Route component={DefaultContainer}/>*/}
                     </Switch>
                 </BrowserRouter>
@@ -84,4 +87,4 @@ class LoginContainer extends React.Component {
     }
 }
 
-export default Main;
+export default withRouter(Main);

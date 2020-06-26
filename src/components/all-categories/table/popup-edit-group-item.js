@@ -26,6 +26,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import axios from "axios";
 import qs from "querystring";
+import Tooltip from "@material-ui/core/Tooltip";
 
 const CssTextField = withStyles({
     root: {
@@ -43,15 +44,7 @@ const CssTextField = withStyles({
     },
 })(TextField);
 
-// const styles = theme => ({
-//     notchedOutline: {
-//         borderWidth: "1px",
-//         borderColor: "yellow !important"
-//     }
-// });
-
-
-export default class PopupCreate extends React.Component{
+export default class PopupEditGroupItem extends React.Component{
 
     constructor(props){
         super(props);
@@ -64,6 +57,7 @@ export default class PopupCreate extends React.Component{
             productManufacturer: '',
             productName: '',
             productGroupId: '',
+            productGroupName: '',
 
             amountRemove: '',
             amountAdd: '',
@@ -103,18 +97,26 @@ export default class PopupCreate extends React.Component{
     componentDidMount() {
         const token = localStorage.getItem('token')
 
-        axios.get('http://localhost:5000/api/group/getAll', { headers: { 'Authorization': token, 'Content-Type': 'application/x-www-form-urlencoded' } })
+        axios.get('http://localhost:5000/api/good/getOne/' + this.props.itemID, { headers: { 'Authorization': token, 'Content-Type': 'application/x-www-form-urlencoded' } })
             .then(response => {
                 this.setState({
-                    groups: response.data.groups,
+                    productName: response.data.product_name,
+                    product_amount: response.data.product_amount,
+                    productDescr: response.data.product_descr,
+                    productManufacturer: response.data.product_manufacturer,
+                    product_price: response.data.product_price,
+                    productGroupId: response.data.product_group_id,
+                    productGroupName: response.data.product_group_name,
+                    productId: response.data.id
                 });
+                console.log(response.data)
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 console.log(error);
             });
     }
 
-    handleItemAdd = (e) => {
+    handleItemEdit = (e) => {
         e.preventDefault();
 
         const token = localStorage.getItem('token')
@@ -133,10 +135,11 @@ export default class PopupCreate extends React.Component{
                 productManufacturer: this.state.productManufacturer,
                 productPrice: this.state.product_price,
                 productName: this.state.productName,
-                productGroupId: this.state.productGroupId
+                productGroupId: this.state.productGroupId,
+                productId: this.state.productId
             };
 
-            axios.post('http://localhost:5000/api/good', qs.stringify(newItem), { headers: { 'Authorization': token, 'Content-Type': 'application/x-www-form-urlencoded' } })
+            axios.post('http://localhost:5000/api/good/update', qs.stringify(newItem), { headers: { 'Authorization': token, 'Content-Type': 'application/x-www-form-urlencoded' } })
                 .then(
                     // window.location.reload()
                 )
@@ -146,16 +149,6 @@ export default class PopupCreate extends React.Component{
 
             console.log(newItem);
 
-
-            this.setState({
-                product_group_name: '',
-                product_price: '',
-                product_amount: 0,
-                productDescr: '',
-                productManufacturer: '',
-                productName: '',
-                productGroupId: '',
-            });
         }
     };
 
@@ -176,16 +169,24 @@ export default class PopupCreate extends React.Component{
         return (
 
             <Popup lockScroll={true} modal closeOnDocumentClick trigger={
-                <button className="create-vac-employer">
-                    Створити товар
-                </button>
+                <Tooltip title={'Редагувати товар'}>
+                    <button className="edit-button-table">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            className="feather-edit-2"
+                        >
+                            <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
+                        </svg>
+                    </button>
+                </Tooltip>
             }
             >
                 {close => (
                     <div className="container">
                         <div className="row margin-bottom-create-item">
                             <div className="col-12">
-                                <span className="item-creation-main-text">Створення товару</span>
+                                <span className="item-creation-main-text">Редагування товару</span>
                                 <div className="close" onClick={close}>
                                     <img src={x} className="close-icon" alt={"close-popup"}/>
                                 </div>
@@ -228,7 +229,6 @@ export default class PopupCreate extends React.Component{
                                         Вилучити товар
                                     </Button>
                                     <CssTextField
-                                        type={"number"}
                                         name="product_amount"
                                         required
                                         value={this.state.product_amount}
@@ -245,7 +245,6 @@ export default class PopupCreate extends React.Component{
                             <div className="row margin-bottom-create-item align-items-center">
                                 <div className="col-10">
                                     <CssTextField
-                                        type={"number"}
                                         name="amountRemove"
                                         value={this.state.amountRemove}
                                         onChange={this.handleChange}
@@ -267,7 +266,6 @@ export default class PopupCreate extends React.Component{
                             <div className="row margin-bottom-create-item align-items-center">
                                 <div className="col-10">
                                     <CssTextField
-                                        type={"number"}
                                         name="amountAdd"
                                         value={this.state.amountAdd}
                                         onChange={this.handleChange}
@@ -303,19 +301,11 @@ export default class PopupCreate extends React.Component{
                             <div className="col-12" id="outlined-select-currency">
                                 <CssTextField
                                     required
-                                    name="productGroupId"
-                                    select
-                                    value={this.state.productGroupId}
-                                    label="Категорія"
-                                    onChange={this.handleChange}
+                                    disabled
+                                    value={this.state.productGroupName}
                                     variant="outlined"
-                                >
-                                    {this.state.groups.map((option) => (
-                                        <MenuItem key={option.group_name} value={option.group_id}>
-                                            {option.group_name}
-                                        </MenuItem>
-                                    ))}
-                                </CssTextField>
+                                    label={"Категорія"}
+                                />
                             </div>
                         </div>
 
@@ -323,14 +313,12 @@ export default class PopupCreate extends React.Component{
                             <div className="col-12">
                                 <CssTextField
                                     required={true}
-                                    id={"padding-input"}
-                                    type={"number"}
                                     className="margin-bottom-create-item"
                                     name={'product_price'}
                                     label="Ціна товару"
                                     value={this.state.product_price}
                                     onChange={this.handleChange}
-                                    variant="outlined"
+                                    variant={"outlined"}
                                 />
                             </div>
                         </div>
@@ -344,7 +332,7 @@ export default class PopupCreate extends React.Component{
                                     multiline
                                     rows={6}
                                     required
-                                    id="outlined-text-email-desription"
+                                    id="outlined-text-email"
                                     label="Опис товару"
                                     variant="outlined"
                                 />
@@ -353,8 +341,8 @@ export default class PopupCreate extends React.Component{
 
                         <div className="row">
                             <div className="col-12">
-                                <button onClick={this.handleItemAdd.bind(this)} className="button-popup-create">
-                                    Створити товар
+                                <button onClick={this.handleItemEdit.bind(this)} className="button-popup-create">
+                                    Редагувати товар
                                 </button>
                             </div>
                         </div>

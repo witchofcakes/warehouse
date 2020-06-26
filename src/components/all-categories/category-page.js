@@ -9,6 +9,13 @@ import SideBar from "../topbar-sidebar/side-bar";
 import TableAllItems from "../all-items/table/table-all-items";
 
 import Tooltip from "@material-ui/core/Tooltip";
+import TableCategory from "./table/table-category";
+import axios from "axios";
+import PopupEditGroup from "./popup-edit-group";
+import PopupDeleteGroup from "./popup-delete-group";
+import EmptyCategoryPage from "./empty-category-page";
+import PopupAddItem from "./popup-add-item-group";
+import PopupAddItemOneGroup from "./popup-add-item-group";
 
 const drawerWidth = 240;
 
@@ -84,7 +91,7 @@ const styles = theme => ({
     content: {
         flexGrow: 1,
         padding: '60px 25px 20px 25px',
-        width: '100%',
+        width: '80%',
         display: 'flex',
         flexDirection: 'column',
         height: '100vh',
@@ -128,7 +135,29 @@ class CategoryPage extends React.Component {
         super(props);
         this.state = {
             openDrawer: true,
+            productsCategory: [],
+            categoryID: this.props.match.params.id,
+
+            group_descr: '',
+            group_name: '',
         };
+    }
+
+    componentDidMount() {
+        const token = localStorage.getItem('token')
+
+        axios.get('http://localhost:5000/api/group/getOne/' + this.state.categoryID, { headers: { 'Authorization': token } })
+            .then(response => {
+                this.setState({
+                    productsCategory: response.data.products,
+                    group_descr: response.data.group_descr,
+                    group_name: response.data.group_name,
+                });
+                console.log(this.state.productsCategory)
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
     }
 
     handleDrawerOpen = () => {
@@ -143,41 +172,42 @@ class CategoryPage extends React.Component {
         const { classes } = this.props;
 
         return (
-            <div className={classes.content}>
+            <div className={classes.content} id={"margin-bottom-page-group"}>
                 <div className={classes.toolbar} />
 
-                <div className="row">
-                    <div className="col-8">
-                        <div className="text-main-title-cabinet">Продовольчі товари</div>
-                    </div>
-                    <div className="col-4 justify-content-end">
-                        <Tooltip title={"Додати товар в групу"}>
-                            <button className="button-edit-group">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="feather-plus-item-category">
-                                    <line x1="12" y1="5" x2="12" y2="19"/>
-                                    <line x1="5" y1="12" x2="19" y2="12"/>
-                                </svg>
-                            </button>
-                        </Tooltip>
-                        <Tooltip title={"Редагувати групу товарів"}>
-                            <button className="button-edit-group margin-delete-category">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="feather-edit-category">
-                                    <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
-                                </svg>
-                            </button>
-                        </Tooltip>
-                        <Tooltip title={"Видалити групу товарів"}>
-                            <button className="button-edit-group margin-delete-category">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="feather-edit-category">
-                                    <polyline points="3 6 5 6 21 6"/>
-                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-                                </svg>
-                            </button>
-                        </Tooltip>
-                    </div>
-                </div>
+                {
+                    this.state.group_name ?
+                        <React.Fragment>
+                            <div className="row">
+                                <div className="col-8">
+                                    <div className="text-main-title-cabinet">{this.state.group_name}</div>
+                                </div>
 
-                <TableAllItems/>
+                                <div className="col-4 justify-content-end">
+                                    <Tooltip title={"Додати товар в групу"}>
+                                       <PopupAddItemOneGroup categoryID={this.state.categoryID} groupName={this.state.group_name}/>
+                                    </Tooltip>
+
+                                    <Tooltip title={"Редагувати групу товарів"}>
+                                        <PopupEditGroup categoryID={this.state.categoryID}/>
+                                    </Tooltip>
+
+                                    <Tooltip title={"Видалити групу товарів"}>
+                                        <PopupDeleteGroup categoryID={this.state.categoryID} name={this.state.group_name}/>
+                                    </Tooltip>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-8">
+                                    <p className="description-group-page">{this.state.group_descr}</p>
+                                </div>
+                            </div>
+
+                            <TableCategory categoryID={this.state.categoryID} groupName={this.state.group_name} productsCategory={this.state.productsCategory}/>
+                        </React.Fragment>
+                        :
+                        <EmptyCategoryPage/>
+                }
 
             </div>
         );

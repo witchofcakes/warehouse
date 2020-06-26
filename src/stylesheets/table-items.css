@@ -27,11 +27,12 @@
 }
 
 .container-mui-table {
-    min-height: 400px;
+    height: 400px;
     border-radius: 10px !important;
     /*border: 1px solid red;*/
-    overflow-y: hidden !important;
+    overflow-y: auto !important;
 }
+
 
 .paper-mui-table {
     width: 100%;
@@ -151,6 +152,10 @@
     margin-bottom: 2px!important;
 }
 
+.feather-trash-delete-order-camp-row:hover{
+    stroke: #FE5F55 !important;
+}
+
 .collapse-name-details {
     display: inline;
     font-size: 15px;
@@ -182,12 +187,16 @@
     box-shadow: rgba(0, 0, 0, 0.15) 0 2px 8px !important;
 }
 
+#all-items-table .container-table-paper{
+    margin-bottom: 60px !important;
+}
+
 .MuiTableRow-root.MuiTableRow-hover:hover{
     cursor: pointer !important;
 }
 
 .table-width{
-    width: 120% !important;
+    width: 140% !important;
 }
 
 .description-cell-width{
@@ -195,4 +204,8 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
+}
+
+.block-activities-white{
+    background: white;
 }

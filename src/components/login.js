@@ -7,7 +7,10 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 
+import axios from "axios"
+
 import {withStyles,} from '@material-ui/core/styles';
+import UserContext from "../UserContext";
 
 const CssTextField = withStyles({
     root: {
@@ -31,15 +34,14 @@ const CssTextField = withStyles({
 
 export default class Login extends React.Component{
 
+    static contextType = UserContext
+
     constructor(props) {
         super(props);
         this.state = {
 
-            password: null,
-            email: null,
-
-            verified: null,
-            authenticated: null,
+            password: '',
+            login: '',
 
             showPassword: false,
         };
@@ -66,55 +68,82 @@ export default class Login extends React.Component{
 
     InputFieldPassword() {
         return (
-            <FormControl required fullWidth={true} variant="outlined">
-                <InputLabel htmlFor="outlined-adornment-password">Пароль</InputLabel>
-                <OutlinedInput
+            <div className="row align-items-center">
+                <div className="col-11">
+                <CssTextField
+                    id={"password-field"}
+                    required
                     name={'password'}
-                    label="Пароль*"
+                    label="Пароль"
+                    variant="outlined"
                     type={this.state.showPassword ? 'text' : 'password'}
                     value={this.state.password}
                     onChange={this.handleChange}
-                    endAdornment={
-                        <InputAdornment position="end">
-                            <IconButton
-                                className="button-login-bg"
-                                disableRipple="true"
-                                disableFocusRipple="true"
-                                aria-label="toggle password visibility"
-                                onClick={this.handleClickShowPassword.bind(this)}
-                                onMouseDown={this.handleMouseDownPassword}
-                            >
-                                {this.state.showPassword ? (
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 24 24"
-                                        className="feather-eye-login"
-                                    >
-                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
-                                        <circle cx="12" cy="12" r="3" />
-                                    </svg>
-                                ) : (
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 24 24"
-                                        className="feather-eye-off-login"
-                                    >
-                                        <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
-                                        <line x1="1" y1="1" x2="23" y2="23" />
-                                    </svg>
-                                )}
-                            </IconButton>
-                        </InputAdornment>
-
-                    }
                 />
-            </FormControl>
+                </div>
+                <div className="col no-gutters background-login-but">
+                <IconButton
+                    className="button-login-bg"
+                    disableRipple="true"
+                    disableFocusRipple="true"
+                    aria-label="toggle password visibility"
+                    onClick={this.handleClickShowPassword.bind(this)}
+                    onMouseDown={this.handleMouseDownPassword}
+                >
+                    {this.state.showPassword ? (
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            className="feather-eye-login"
+                        >
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg>
+                    ) : (
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            className="feather-eye-off-login"
+                        >
+                            <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" />
+                            <line x1="1" y1="1" x2="23" y2="23" />
+                        </svg>
+                    )}
+                </IconButton>
+                </div>
+            </div>
+
         );
     }
 
+    handleLogin(token, setToken){
+
+        const { login, password } = this.state;
+
+        if (!password || !login) {
+            alert("Будь ласка, заповніть всі поля")
+        }
+
+        else {
+
+            axios.get(`http://localhost:5000/api/login/?login=${login}&password=${password}`).then(response => {
+
+                const newToken = response.data
+                setToken(newToken)
+                console.log("newToken: " + newToken)
+                this.props.history.push('/all-items');
+                // window.location.reload();
+
+            }).catch(error => {
+                alert(error);
+            });
+        }
+    }
+
     render() {
+        const { token, setToken } = this.context
         return (
-            <div>
+
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-6 padding-top-login">
@@ -131,8 +160,11 @@ export default class Login extends React.Component{
                                             <CssTextField
                                                 required
                                                 id="outlined-text-email"
-                                                label="E-mail"
+                                                label="Логін"
+                                                name={"login"}
                                                 variant="outlined"
+                                                value={this.state.login}
+                                                onChange={this.handleChange}
                                             />
                                         </div>
                                     </div>
@@ -143,23 +175,20 @@ export default class Login extends React.Component{
                                     </div>
                                     <div className="row">
                                         <div className="col-12">
-                                            <a href="/all-items">
-                                            <button className="login-button">
+                                            <button onClick={() => {this.handleLogin(token, setToken)}} className="login-button">
                                                 Увійти
                                             </button>
-                                            </a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                        </div>
-                        <div className="col-6 image-login-container">
 
                         </div>
+                        <div className="col-6 image-login-container"/>
                     </div>
                 </div>
-            </div>
+
         );
     }
 }

@@ -8,10 +8,13 @@ import Toolbar from '@material-ui/core/Toolbar';
 import MenuIcon from '@material-ui/icons/Menu';
 import IconButton from '@material-ui/core/IconButton';
 import logo from "../../images/logo.png"
+import { Redirect } from 'react-router'
 
-import Popper from '@material-ui/core/Popper';
-import { ClickAwayListener } from '@material-ui/core';
+import { withRouter } from 'react-router-dom';
+
 import PopupCreate from "./popups/popup-create-items";
+import PopupCreateGroup from "./popups/popup-create-group";
+import axios from "axios";
 
 class TopBar extends React.Component {
     constructor(props) {
@@ -20,23 +23,30 @@ class TopBar extends React.Component {
             isMenuOpen: false,
             anchorMenu: null,
 
+            query: ''
         };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.onKeyDown = this.onKeyDown.bind(this)
     }
 
-    handleKeyDown = evt => {
-        if (evt.key === 'Enter') this.props.onKeyDown();
-    };
-
-    onClickClose = event => {
-        if (this.state.anchorMenu && this.state.anchorMenu.contains(event.target)) return;
-        this.setState({ isMenuOpen: false });
-    };
-
-    onClickToogle = evt => {
+    handleChange(event) {
         this.setState({
-            anchorMenu: evt.currentTarget,
-            isMenuOpen: !this.state.isMenuOpen,
+            [event.target.name]: event.target.value,
         });
+    }
+
+    onKeyDown = evt => {
+        if (evt.key === 'Enter') {
+
+            if (this.state.query) {
+                console.log(this.state.query)
+                this.props.history.push(`/search-page/?query=` + this.state.query)
+                window.location.reload();
+            } else {
+                alert("Будь ласка, введіть пошукове слово :)")
+            }
+        }
     };
 
     render() {
@@ -65,7 +75,7 @@ class TopBar extends React.Component {
                     <div className="row align-items-center">
                         <div className="col-12 sidebar-column">
                             <div>
-                                <a className="navbar-brand-sidebar" href="/">
+                                <a className="navbar-brand-sidebar" href="/all-items">
                                     <img src={logo} className="logo-mount-sidebar"/>
                                 </a>
                             </div>
@@ -88,7 +98,7 @@ class TopBar extends React.Component {
 
                                 <InputBase
                                     name={'query'}
-                                    value={this.props.query}
+                                    value={this.state.query}
                                     placeholder={'Пошук товару'}
                                     classes={{
                                         root: classes.inputRoot,
@@ -96,25 +106,15 @@ class TopBar extends React.Component {
                                     }}
                                     id="search-navbar-employer-vacancy"
                                     inputProps={{ 'aria-label': 'search' }}
-                                    onChange={this.props.onChange}
-                                    onKeyDown={this.handleKeyDown}
+                                    onChange={this.handleChange}
+                                    onKeyDown={this.onKeyDown}
                                 />
                             </div>
                         </div>
 
                         <div className="display-block-ml">
-                            <button
-                                className="create-group-button"
-                                onClick={evt => {
-                                    evt.preventDefault();
-                                    window.location.href = `/employer-vacancy-create/${this.state.employerID}`;
-                                }}
-                            >
-                                Створити групу
-                            </button>
-
+                            <PopupCreateGroup/>
                             <PopupCreate/>
-
                         </div>
 
                     </div>
@@ -124,4 +124,4 @@ class TopBar extends React.Component {
     }
 }
 
-export default TopBar;
+export default withRouter(TopBar);

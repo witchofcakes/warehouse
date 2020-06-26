@@ -503,20 +503,19 @@
     stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
-    width: 26px;
-    height: 26px;
-    stroke: #538ef8;
+    width: 27px;
+    height: 27px;
 }
 
 .icon-margin-block{
     margin-bottom: 30px;
 }
 
-.stand-icon{
-    stroke: #ffdc23;
+.arrow-activities-yellow{
+    stroke: #ffd600;
 }
 
-.gift-icon {
+.arrow-activities-red{
     stroke: #f55d50;
 }
 
@@ -524,7 +523,7 @@
     stroke: #7b53f8;
 }
 
-.case-icon{
+.arrow-activities-blue{
     stroke: #538ef8;
 }
 
@@ -532,7 +531,7 @@
     stroke: #7bd543;
 }
 
-.olimpiad-icon{
+.arrow-activities-lightblue{
     stroke: #48d1e9;
 }
 
@@ -585,4 +584,23 @@
 
 .margin-delete-category{
     margin-left: 25px;
+}
+
+.button-popup-item-page{
+    background: unset;
+    border: none;
+}
+
+.button-popup-item-page:hover{
+    text-decoration: underline;
+}
+
+#categories-cards-margin{
+    padding-bottom: 60px;
+}
+
+.price-for-piece{
+    font-size: 15px;
+    margin-top: -10px;
+    color: #484848;
 }

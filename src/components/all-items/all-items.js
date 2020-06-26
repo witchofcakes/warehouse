@@ -9,6 +9,8 @@ import SideBar from "../topbar-sidebar/side-bar";
 import CardCategory from "../all-categories/category-card";
 import TableAllItems from "./table/table-all-items";
 import CardStatistics from "./statistics-card";
+import axios from "axios"
+import Paper from "@material-ui/core/Paper";
 
 const drawerWidth = 240;
 
@@ -84,7 +86,7 @@ const styles = theme => ({
     content: {
         flexGrow: 1,
         padding: '60px 25px 20px 25px',
-        width: '100%',
+        width: '80%',
         display: 'flex',
         flexDirection: 'column',
         height: '100vh',
@@ -127,9 +129,43 @@ class AllItems extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            products: [],
             openDrawer: true,
+
+            group_amount: null,
+            product_sum_price: null,
+            product_amount: null
         };
     }
+
+    componentDidMount() {
+        const token = localStorage.getItem('token')
+
+        axios.get('http://localhost:5000/api/good/getAll', { headers: { 'Authorization': token } })
+            .then(response => {
+                this.setState({
+                    products: response.data.products
+                });
+                console.log(this.state.products)
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+
+        axios.get('http://localhost:5000/api/good/getStats', { headers: { 'Authorization': token } })
+            .then(response => {
+                this.setState({
+                    group_amount: response.data.group_amount,
+                    product_sum_price: response.data.product_sum_price,
+                    product_amount: response.data.product_amount,
+                });
+                console.log(response.data.group_amount)
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    }
+
 
     handleDrawerOpen = () => {
         this.setState({ openDrawer: true });
@@ -143,10 +179,14 @@ class AllItems extends React.Component {
         const { classes } = this.props;
 
         return (
-            <div className={classes.content}>
+            <div className={classes.content} id="all-items-table">
                 <div className={classes.toolbar} />
 
-                <CardStatistics/>
+                <CardStatistics
+                    group_amount={this.state.group_amount}
+                    product_sum_price={this.state.product_sum_price}
+                    product_amount={this.state.product_amount}
+                />
 
                 <div className="row">
                     <div className="col-12">
@@ -154,7 +194,7 @@ class AllItems extends React.Component {
                     </div>
                 </div>
 
-                <TableAllItems/>
+                <TableAllItems products={this.state.products}/>
 
             </div>
         );
