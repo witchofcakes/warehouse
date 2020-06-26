@@ -19,17 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f82bfa11-04e9-4070-aa9e-0fedc42908f9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/all-categories/all-categories.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/all-categories/all-categories.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/all-categories/table/popup-edit-group-item.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/all-categories/table/popup-edit-group-item.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/all-items/all-items.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/all-items/all-items.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/all-items/table/popup-delete.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/all-items/table/popup-delete.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/all-items/table/popup-edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/all-items/table/popup-edit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/all-items/table/table-row.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/all-items/table/table-row.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/search-page.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/search-page.js" afterDir="false" />
-    </list>
+    <list default="true" id="f82bfa11-04e9-4070-aa9e-0fedc42908f9" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -93,7 +83,7 @@
       <updated>1593004740988</updated>
       <workItem from="1593004743733" duration="39444000" />
       <workItem from="1593091956461" duration="597000" />
-      <workItem from="1593092580935" duration="70134000" />
+      <workItem from="1593092580935" duration="70906000" />
     </task>
     <servers />
   </component>
